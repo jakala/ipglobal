@@ -48,9 +48,10 @@ services:
     networks:
       - app
     depends_on:
-      ${APP_NAME}:
+      db:
         condition: service_completed_successfully
-
+      rabbitmq:
+        condition: service_completed_successfully
 
 networks:
   app:
