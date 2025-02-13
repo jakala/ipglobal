@@ -1,0 +1,47 @@
+services:
+  server:
+    container_name: ${APP_NAME}
+    build: .
+    env_file: .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/api
+    working_dir: /api
+    entrypoint: ["php", "-S", "0.0.0.0:8000", "-t", "/api/public/"]
+    networks:
+      - app
+
+  consumer:
+    container_name: ${APP_NAME}_consumer
+    build: .
+    env_file: .env
+    volumes:
+      - .:/api
+    working_dir: /api
+    command: "bin/console messenger:consume async"
+    networks:
+      - app
+
+  rabbitmq:
+    container_name: "rabbitmq"
+    image: rabbitmq:4-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - app
+
+  mysql:
+    container_name: "db"
+    image: mysql:latest
+    restart: always
+    env_file: .env
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    networks:
+      - app
+networks:
+  app:
+    driver: bridge

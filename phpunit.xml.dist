@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+        beStrictAboutOutputDuringTests="true"
+        beStrictAboutChangesToGlobalState="true"
+        beStrictAboutTestsThatDoNotTestAnything="false"
+        bootstrap="./tests/bootstrap.php"
+        colors="true"
+        stopOnError="true"
+        stopOnFailure="true"
+        stopOnRisky="true"
+>
+    <source
+        ignoreIndirectDeprecations="true" restrictNotices="true" restrictWarnings="true">
+        <include>
+            <directory>./src</directory>
+        </include>
+    </source>
+    <coverage
+            pathCoverage="true"
+            disableCodeCoverageIgnore="true"
+            ignoreDeprecatedCodeUnits="true">
+        <report>
+            <html outputDirectory="var/cache/coverage" lowUpperBound="50" highLowerBound="90" />
+        </report>
+    </coverage>
+    <php>
+        <ini name="error_reporting" value="-1"/>
+        <server name="APP_ENV" value="test" force="true"/>
+        <server name="SHELL_VERBOSITY" value="-1"/>
+        <server name="XDEBUG_MODE" value="coverage"/>
+    </php>
+    <testsuites>
+        <testsuite name="Unit test">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

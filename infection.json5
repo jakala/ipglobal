@@ -1,0 +1,15 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "config",
+            "migrations",
+            "public",
+            "src",
+            "tests"
+        ]
+    },
+    "mutators": {
+        "@default": true
+    }
+}
