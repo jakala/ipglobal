@@ -7,7 +7,10 @@
 ```
 git clone https://github.com/jakala/ipglobal.git
 ```
-
+ - instalacion de vendors:
+```
+composer install --ignore-platform-reqs
+```
 ## crear infraestructura docker
  - docker compose up -d --build
 
