@@ -31,11 +31,6 @@ services:
     entrypoint: ["php", "-S", "0.0.0.0:8000", "-t", "/api/public/"]
     networks:
       - app
-    depends_on:
-      mysql:
-        condition: service_completed_successfully
-      rabbitmq:
-        condition: service_completed_successfully
 
   consumer:
     container_name: ${APP_NAME}_consumer
@@ -47,11 +42,6 @@ services:
     command: "bin/console messenger:consume async"
     networks:
       - app
-    depends_on:
-      mysql:
-        condition: service_completed_successfully
-      rabbitmq:
-        condition: service_completed_successfully
 
 networks:
   app:
