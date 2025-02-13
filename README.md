@@ -6,7 +6,7 @@ necesario separar la application con un consumidor y una gestion de mensajes con
 
 El enunciado de la práctica esta [aqui](docs/3_PRUEBA.md).
 
-## Solucion
+## Solucion con DDD
 La solución aquí planteada trata de simular en tres apartados la tienda descrita anteriormente.
 En dichos apartados (bounded-context) están separadas las logicas DDD correspondientes. Para no 
 complicar mucho la anidación de los directorios, he optado por esta estructura:
