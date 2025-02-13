@@ -101,3 +101,6 @@ order: "647718" quantity '3' not available for product '2
 order: "66373" quantity '3' not available for product '2
 ```
 
+## Mejoras
+ - aumentar cobertura de tests
+ - forzar el arranque del consumidor DESPUES de rabbitmq
