@@ -44,7 +44,7 @@ services:
     volumes:
       - .:/api
     working_dir: /api
-    command: bin/console messenger:consume async"
+    command: "bin/console messenger:consume async"
     networks:
       - app
     depends_on:
