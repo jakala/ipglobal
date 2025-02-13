@@ -14,8 +14,8 @@ en las primeras ejecuciones, para la peticion:
 ```
 make create-order userId=1 productId=1 amount=1
 ```
-
-nos da una linea como:
+estamos indicando el usuario 1 (Jesus) que pide del producto 1 (ipad) una cantidad 1.
+Dado que en la bbdd de inicio no hay items de ese producto (amount = 0), el proceso del order nos da una línea como:
 ```
 order: "647718" quantity '1' not available for product '1'
 ```

@@ -72,3 +72,7 @@ framework:
       failed: 'doctrine://default?queue_name=failed'  <--- failed.
 ```
 
+# Base de Datos:
+Para no aumentar y complicar mucho el Dominio, he optado por el esquema de bbdd definido en el [readme](../README.md).
+Aunque tenemos campos como NAME (en usuario y producto) en realidad no se están usando para el 
+proposito de la aplicacion, pero puede quedar más claro a la hora de explicar el proceso.

@@ -55,6 +55,11 @@ se crea el schema anterior y se añaden unos cuantos valores a las tablas de pro
 | 4 | nokia | 6 |
 | 5 | android | 80 |
 
+donde: 
+ - id: el identificador del producto
+ - name: nombre del producto
+ - amount: representa el stock que tiene ese producto
+
 ### User
 | id | name  |
  |----|------| 
@@ -62,6 +67,10 @@ se crea el schema anterior y se añaden unos cuantos valores a las tablas de pro
 | 2 | marcos |
 | 3 | pablo  |
 | 4 | jose   |
+
+donde:
+ - id: el identificador de usuario
+ - name: nombre del usuario.
 
 Estos seran los ids que podamos utilizar.
 
