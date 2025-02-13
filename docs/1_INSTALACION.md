@@ -5,7 +5,7 @@
 ## clonacion el repositorio
  - git clone del repositorio:
 ```
-git clone 
+git clone https://github.com/jakala/ipglobal.git
 ```
 
 ## crear infraestructura docker
