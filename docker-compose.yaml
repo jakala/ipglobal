@@ -8,7 +8,11 @@ services:
       - "15672:15672"
     networks:
       - app
-
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
   mysql:
     container_name: "db"
     image: mysql:latest
@@ -19,6 +23,11 @@ services:
       - "33060:33060"
     networks:
       - app
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 2
 
   server:
     container_name: ${APP_NAME}
@@ -45,9 +54,9 @@ services:
     command: "bin/console messenger:consume async"
     depends_on:
       rabbitmq:
-        condition: service_completed_successfully
-      db:
-        condition: service_completed_successfully
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
     networks:
       - app
 
