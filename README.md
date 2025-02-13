@@ -4,7 +4,7 @@ Se trata de una simulacion de Tienda en la que se genera un mensaje para la crea
 pedido. Dicho pedido puede tardar en procesarse (debido a ciertos calculos), por lo que es 
 necesario separar la application con un consumidor y una gestion de mensajes con rabbitmq.
 
-El enunciado de la práctica esta [aqui](docs/3_PRUEBA.md).
+El enunciado completo de la práctica está [aqui](docs/3_PRUEBA.md).
 
 ## Solucion con DDD
 La solución aquí planteada trata de simular en tres apartados la tienda descrita anteriormente.
@@ -26,13 +26,16 @@ src/
         ├── Domain
         └── Infrastructure
 ```
-
-## instalacion
+si la aplicacion creciera más, podriamos aumentar los detalles (Por ej, en Shared/Domain se podria crear una 
+carpeta por cada agregado y sus componentes), pero por la actual situacion creo que con esto es suficiente
+## Instalacion y uso
 Esta basada en el uso de contenedores docker y comandos Make. 
 
 Podemos seguir el proceso de instalacion [aqui](docs/1_INSTALACION.md)
 
 Los comandos make utilizados se pueden ver [aqui](docs/4_MAKEFILE.md)
+
+Hay ejemplos de uso de la aplicacion [aqui](2_USO.md)
 
 ## Base de datos
 ![schema](docs/schema.png)
@@ -61,46 +64,9 @@ se crea el schema anterior y se añaden unos cuantos valores a las tablas de pro
 | 4 | jose   |
 
 Estos seran los ids que podamos utilizar.
-## Ejecución de comando
-```
-make create-order userId={int} productId={int} amount={int}
-```
-Esto intentara crear un order con el user, product y amount requeridos.
 
-para la peticion:
-```
-make create-order userId=1 productId=1 amount=1
-```
-
-nos da una linea como:
-```
-order: "647718" quantity '1' not available for product '1'
-```
-podemos llegar a ver una tabla como esta:
-
-|id|product_id_id|user_id_id|amount|status|
-|--|--|--|--|--|
-|1635|3|1|3|REJECTED|
-|471461|3|1|3|APPROVED|
-|844841|4|1|3|APPROVED|
-
-si queremos ver que sucede, podemos ver un log del consumer:
-```
-$ docker logs api_consumer -f
-
- [OK] Consuming messages from transport "async".                                
-
- // The worker will automatically exit once it has received a stop signal via   
- // the messenger:stop-workers command.                                         
-
- // Quit the worker with CONTROL-C.                                             
-
- // Re-run the command with a -vv option to see logs about consumed messages.   
-
-order: "647718" quantity '3' not available for product '2
-order: "66373" quantity '3' not available for product '2
-```
-
+## Decisiones de desarrollo
+He apuntado en [este documento](docs/5_DECISIONES.md) ciertas decisiones que he tomado a la hora de desarrollar
+la aplicacion. 
 ## Mejoras
  - aumentar cobertura de tests
- - forzar el arranque del consumidor DESPUES de rabbitmq
