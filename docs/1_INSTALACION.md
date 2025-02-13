@@ -7,10 +7,7 @@
 ```
 git clone https://github.com/jakala/ipglobal.git
 ```
- - instalacion de vendors:
-```
-composer install --ignore-platform-reqs
-```
+
 ## crear infraestructura docker
  - docker compose up -d --build
 
@@ -20,8 +17,5 @@ Este comando ejecuta la creacion de los contenedores:
  - db: base de datos local
  - rabbitmq: el servidor rabbitmq (user:guest, pass:guest)
 
-```
-nota: ejecutar 2 veces, el servicio *consumer* no se reinicia aunque tiene dependencias
-```
 ## crear bbdd y poblar datos
  - **make init-database**: se encarga de crear el schema y unos datos iniciales de prueba
